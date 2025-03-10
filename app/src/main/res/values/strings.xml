@@ -19,4 +19,5 @@
     <string name="category_important_task">Important</string>
     <string name="date_task">00/00/0000</string>
     <string name="save_task">Save</string>
+    <string name="title_task_row">Title Task</string>
 </resources>

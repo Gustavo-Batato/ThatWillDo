@@ -27,6 +27,9 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     private val _selectedCategory = MutableLiveData<String>()
     val selectedCategory: LiveData<String> = _selectedCategory
 
+    private val _taskCreated = MutableLiveData<String>()
+    val taskCreated: LiveData<String> = _taskCreated
+
     fun setTimeTask(hour: Int, minute: Int) {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hour)
@@ -51,6 +54,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insert(task: TaskModel) {
-        taskRepository.insertTask(task)
+        _taskCreated.value = if (taskRepository.insertTask(task)) {
+            "Success"
+        } else {
+            "Error"
+        }
     }
 }
