@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.thatwilldo.databinding.FragmentTaskBinding
+import com.example.thatwilldo.ui.task.model.TaskModel
+import com.example.thatwilldo.ui.task.viewmodel.TaskViewModel
 import java.util.Calendar
 
 class TaskFragment : Fragment() {
@@ -26,8 +28,32 @@ class TaskFragment : Fragment() {
 
         setTimeDialog()
         observers()
+        saveTask()
 
         return binding.root
+    }
+
+    private fun saveTask() {
+        binding.buttonSaveTask.setOnClickListener {
+            setCategory()
+
+            val titleTask = binding.editTextTitle.text.toString()
+            val descriptionTask = binding.editTextDescription.text.toString()
+            val selectedDate = taskViewModel.selectedDateLong.value ?: 0
+            val selectedTime = taskViewModel.selectedTimeLong.value ?: 0
+            val selectedCategory = taskViewModel.selectedCategory.value ?: "Normal"
+
+            val task = TaskModel(
+                0,
+                titleTask,
+                descriptionTask,
+                selectedDate,
+                selectedTime,
+                selectedCategory
+            )
+
+            taskViewModel.insert(task)
+        }
     }
 
     private fun setTimeDialog() {
@@ -58,6 +84,17 @@ class TaskFragment : Fragment() {
                 )
             }, year, month, day).show()
         }
+    }
+
+    private fun setCategory() {
+        val categoryId = binding.radioGroupCategoryTask.checkedRadioButtonId
+
+        val selectedCategory = when (categoryId) {
+            binding.radioButtonCategoryNormal.id -> "Normal"
+            binding.radioButtonCategoryImportant.id -> "Important"
+            else -> "Normal"
+        }
+        taskViewModel.setCategory(selectedCategory)
     }
 
     private fun observers() {

@@ -1,4 +1,4 @@
-package com.example.thatwilldo.ui.home
+package com.example.thatwilldo.ui.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 

@@ -85,8 +85,8 @@
             android:id="@+id/radio_button_category_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@string/category_normal_task" />
+            android:text="@string/category_normal_task"
+            android:textSize="24sp" />
 
         <RadioButton
             android:id="@+id/radio_button_category_important"
@@ -107,13 +107,14 @@
         app:layout_constraintTop_toTopOf="@+id/text_view_time_task" />
 
     <Button
+        android:id="@+id/button_save_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_border_save_task"
         android:text="@string/save_task"
         android:textSize="24sp"
-        android:background="@drawable/button_border_save_task"
         app:layout_constraintBottom_toBottomOf="@+id/radio_group_category_task"
-        app:layout_constraintTop_toTopOf="@+id/radio_group_category_task"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radio_group_category_task"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="@+id/radio_group_category_task" />
 </androidx.constraintlayout.widget.ConstraintLayout>
