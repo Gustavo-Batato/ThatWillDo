@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.thatwilldo.databinding.FragmentTaskBinding
+import com.example.thatwilldo.ui.task.constants.TaskConstants
 import com.example.thatwilldo.ui.task.model.TaskModel
 import com.example.thatwilldo.ui.task.viewmodel.TaskViewModel
 import java.util.Calendar
@@ -90,9 +91,9 @@ class TaskFragment : Fragment() {
         val categoryId = binding.radioGroupCategoryTask.checkedRadioButtonId
 
         val selectedCategory = when (categoryId) {
-            binding.radioButtonCategoryNormal.id -> "Normal"
-            binding.radioButtonCategoryImportant.id -> "Important"
-            else -> "Normal"
+            binding.radioButtonCategoryNormal.id -> TaskConstants.Task.Category.NORMAL
+            binding.radioButtonCategoryImportant.id -> TaskConstants.Task.Category.IMPORTANT
+            else -> TaskConstants.Task.Category.NORMAL
         }
         taskViewModel.setCategory(selectedCategory)
     }

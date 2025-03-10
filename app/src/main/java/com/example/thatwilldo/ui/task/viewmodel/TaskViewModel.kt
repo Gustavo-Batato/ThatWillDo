@@ -51,6 +51,6 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insert(task: TaskModel) {
-        taskRepository.insert(task)
+        taskRepository.insertTask(task)
     }
 }
